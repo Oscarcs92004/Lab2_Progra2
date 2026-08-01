@@ -56,21 +56,24 @@ public class EmpleadoVentas extends Empleado {
     @Override
     public String mostrarInformacion() {
 
-        System.out.println("**** EMPLEADO DE VENTAS ****");
-        System.out.println("Código de empleado: " + codigoUnico);
-        System.out.println("Nombre co/mpleto: " +nombre);
-        System.out.println("Fecha de contratación: " + fechaContratacion.getTime());
-        System.out.println("Horas trabajadas: " + horasTrabajadas);
-        
-        System.out.println("Salario base: L. " + salarioBase);
-        System.out.println("Comisión del mes: L. " + calcularComision());
-        System.out.println("Ventas anuales: L. " + calcularVentasAnuales());
-        System.out.println("Pago mensual: L. " +calcularPago());
-    }
+        return super.mostrarInformacion()
+                + "Tasa de comisión: " + (tasaComision * 100) + "%" + "Ventas anuales: L. " + calcularVentasAnuales() + "Cmisión del mes: L. " + calcularComision() + "Pago mensual: L. " + calcularPago();
+        }
 
     public double[] getVentasMensuales() {
         
         return ventasMensuales;
+    }
+    
+    public double calcularVentasAnuales() {
+
+        double total = 0;
+
+        for (int i = 0; i < ventasMensuales.length; i++) {
+            total += ventasMensuales[i];
+        }
+
+        return total;
     }
 
     public double getTasaComision() {
