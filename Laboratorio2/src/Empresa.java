@@ -86,7 +86,61 @@ public class Empresa {
     }
     
     public String generarReporte(){
-    
+        String reporte = "";
+        int cantNormales = 0;
+        int cantTemporales = 0;
+        int cantVentas = 0;
+        reporte += "----- Reporte Empleados -----\n";
+        reporte += "----- Empleados Estandar -----\n";
+        
+        for(int i = 0; i < empleados.size(); i++){
+            Empleado aux = empleados.get(i);
+            if(aux.getClass() == Empleado.class){
+                cantNormales++;
+                
+                reporte += aux.mostrarInformacion();
+                reporte += "\n Horas: " + aux.getHorasTrabajadas();
+                reporte += "\n Salario Base: " + aux.getSalarioBase();
+                reporte += "\n Pago: " + aux.calcularPago();
+                reporte += "\n";
+            }
+        }
+        
+        reporte += "----- Empleados Temporales ----- \n";
+        
+        for(int i = 0; i < empleados.size(); i++){
+            Empleado aux = empleados.get(i);
+            if(aux instanceof EmpleadoTemporal){
+                cantTemporales++;
+                reporte += aux.mostrarInformacion();
+                reporte += "\n Horas: " + aux.getHorasTrabajadas();
+                reporte += "\n Salario Base: " + aux.getSalarioBase();
+                reporte += "\n Pago: " + aux.calcularPago();
+                reporte += "\n";
+            }
+        }
+        
+        reporte += "----- Empleados de Ventas -----\n";
+        
+        for(int i = 0; i < empleados.size(); i++){
+            Empleado aux = empleados.get(i);
+            if(aux instanceof EmpleadoVentas){
+                cantVentas++;
+                reporte += aux.mostrarInformacion();
+                reporte += "\n Horas: " + aux.getHorasTrabajadas();
+                reporte += "\n Salario Base: " + aux.getSalarioBase();
+                reporte += "\n Pago: " + aux.calcularPago();
+                reporte += "\n";
+            }
+        }
+        
+        reporte += "-------- Resumen Cantidad de Empleados de cada tipo -----\n";
+        reporte += "Total estándar: " + cantNormales + "\n";
+        reporte += "Total temporales: " + cantTemporales + "\n";
+        reporte += "Total ventas: " + cantVentas + "\n";
+        reporte += "Total empleados: " + empleados.size();
+        
+        return reporte;
     }
     
     public ArrayList<Empleado> getEmpleado(){
