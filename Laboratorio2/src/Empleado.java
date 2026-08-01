@@ -67,14 +67,14 @@ public class Empleado {
     
     public void registrarHorasTrabajadas(int horas){
         if(horas < 0){
-            return;
+            throw new IllegalArgumentException("Las horas trabajadas no pueden ser negativas.");
         }
         this.horasTrabajadas = horas;
     }
     
     public double calcularPago(){
         if(horasTrabajadas < 0){
-            return -1;
+            throw new IllegalStateException("Las horas trabajadas son inválidas.");
         }
         if(horasTrabajadas > 160.0){
             double salarioFinal = salarioBase*160.0;
