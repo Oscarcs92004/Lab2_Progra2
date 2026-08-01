@@ -21,7 +21,7 @@ public class Empleado {
         this.nombre = nombre;
         this.img = img;
         fechaContratacion = Calendar.getInstance();
-        salarioBase = 15000;
+        salarioBase = 150;
         horasTrabajadas = 0;
     }
     
@@ -65,16 +65,32 @@ public class Empleado {
         this.salarioBase = salarioBase;
     }
     
-    public void registrarHorasTrabajadas(){
-    
+    public void registrarHorasTrabajadas(int horas){
+        if(horas < 0){
+            return;
+        }
+        this.horasTrabajadas = horas;
     }
     
     public double calcularPago(){
-        // borrar el return 0 despues ahorita esta solo para que no tire error
-        return 0;
+        if(horasTrabajadas < 0){
+            return -1;
+        }
+        if(horasTrabajadas > 160){
+            double salarioFinal = salarioBase*160;
+            double deduccion = salarioFinal*0.035;
+            return salarioFinal - deduccion;
+        }
+        double salarioFinal = salarioBase*horasTrabajadas;
+        double deduccion = salarioFinal*0.035;
+        return salarioFinal - deduccion;
     }
     
-    public void mostrarInformacion(){
+    public String mostrarInformacion(){
+        return "Codigo Unico: " + codigoUnico + "\n Nombre: " + nombre + " Fecha de contratacion: " + fechaContratacion;
+    }
     
+    public String toString(){
+        return mostrarInformacion();
     }
 }
