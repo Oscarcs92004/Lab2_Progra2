@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 import java.util.ArrayList;
+import java.util.Calendar;
+
 /**
  *
  * @author oscar
@@ -45,12 +47,33 @@ public class Empresa {
         return true;
     }
     
-    public boolean registrarVentas(){
-    
+    public boolean registrarVentas(String codigoUnico, double monto){
+        Empleado e = buscarEmpleado(codigoUnico);
+        
+        if(e == null){
+            return false;
+        }
+        
+        if(e instanceof EmpleadoVentas){
+            EmpleadoVentas aux = (EmpleadoVentas)e;
+            aux.registrarVentas(monto);
+            return true;
+        }
+        return false;
     }
     
-    public boolean actualizarFechaFinContrato(){
-    
+    public boolean actualizarFechaFinContrato(String codigoUnico, Calendar nuevaFecha){
+        Empleado e = buscarEmpleado(codigoUnico);
+        
+        if(e == null){
+            return false;
+        }
+        if(e instanceof EmpleadoTemporal){
+            EmpleadoTemporal aux = (EmpleadoTemporal) e;
+            aux.actualizarFechaFinContrato(nuevaFecha);
+            return true;
+        }
+        return false;
     }
     
     public double calcularPagoMensual(){
