@@ -76,8 +76,13 @@ public class Empresa {
         return false;
     }
     
-    public double calcularPagoMensual(){
-    
+    public double calcularPagoMensual(String codigoUnico){
+        Empleado e = buscarEmpleado(codigoUnico);
+        if(e == null){
+            return -1;
+        }
+        
+        return e.calcularPago();
     }
     
     public String generarReporte(){
