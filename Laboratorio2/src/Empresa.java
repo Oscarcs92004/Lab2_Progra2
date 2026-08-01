@@ -3,11 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+import java.util.ArrayList;
 /**
  *
  * @author oscar
  */
 public class Empresa {
+    private String nombreEmpresa;
+    private ArrayList<Empleado> empleados;
     
+    public Empresa(String nombreEmpresa){
+        this.nombreEmpresa = nombreEmpresa;
+        empleados = new ArrayList<>();
+    }
 }
