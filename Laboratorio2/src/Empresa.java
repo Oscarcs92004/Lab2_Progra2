@@ -16,4 +16,37 @@ public class Empresa {
         this.nombreEmpresa = nombreEmpresa;
         empleados = new ArrayList<>();
     }
+    
+    public boolean registrarEmpleado(){
+    
+    }
+    
+    public Empleado buscarEmpleado(){
+    
+    }
+    
+    public boolean registrarHorasTrabajadas(){
+    
+    }
+    
+    public boolean registrarVentas(){
+    
+    }
+    
+    public boolean actualizarFechaFinContrato(){
+    
+    }
+    
+    public double calcularPagoMensual(){
+    
+    }
+    
+    public String generarReporte(){
+    
+    }
+    
+    public ArrayList<Empleado> getEmpleado(){
+        return empleados;
+    }
+    
 }

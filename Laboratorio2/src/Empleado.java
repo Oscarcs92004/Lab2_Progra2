@@ -21,7 +21,7 @@ public class Empleado {
         this.nombre = nombre;
         this.img = img;
         fechaContratacion = Calendar.getInstance();
-        salarioBase = 150;
+        salarioBase = 15000;
         horasTrabajadas = 0;
     }
     
@@ -78,11 +78,11 @@ public class Empleado {
         }
         if(horasTrabajadas > 160){
             double salarioFinal = salarioBase*160;
-            double deduccion = salarioFinal*0.035;
-            return salarioFinal - deduccion;
+            double deduccion = salarioBase*0.035;
+            return (salarioFinal/160) - deduccion;
         }
-        double salarioFinal = salarioBase*horasTrabajadas;
-        double deduccion = salarioFinal*0.035;
+        double salarioFinal = (salarioBase*horasTrabajadas)/160;
+        double deduccion = salarioBase*0.035;
         return salarioFinal - deduccion;
     }
     
