@@ -21,7 +21,7 @@ public class Empresa {
     
     public boolean registrarEmpleado(Empleado e){
         if(buscarEmpleado(e.getCodigoUnico()) != null){
-            return false;
+            throw new IllegalArgumentException("El empleado no existe.");
         }
         empleados.add(e);
         return true;
@@ -40,7 +40,7 @@ public class Empresa {
         Empleado e = buscarEmpleado(codigoUnico);
         
         if(e == null){
-            return false;
+             throw new IllegalArgumentException("El empleado no existe.");
         }
         
         e.registrarHorasTrabajadas(horas);
@@ -51,7 +51,7 @@ public class Empresa {
         Empleado e = buscarEmpleado(codigoUnico);
         
         if(e == null){
-            return false;
+            throw new IllegalArgumentException("El empleado no existe.");
         }
         
         if(e instanceof EmpleadoVentas){
@@ -66,7 +66,7 @@ public class Empresa {
         Empleado e = buscarEmpleado(codigoUnico);
         
         if(e == null){
-            return false;
+            throw new IllegalArgumentException("El empleado no existe.");
         }
         if(e instanceof EmpleadoTemporal){
             EmpleadoTemporal aux = (EmpleadoTemporal) e;
@@ -79,7 +79,7 @@ public class Empresa {
     public double calcularPagoMensual(String codigoUnico){
         Empleado e = buscarEmpleado(codigoUnico);
         if(e == null){
-            return -1;
+            throw new IllegalArgumentException("El empleado no existe.");
         }
         
         return e.calcularPago();
