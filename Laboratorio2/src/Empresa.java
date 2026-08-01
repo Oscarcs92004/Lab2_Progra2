@@ -17,16 +17,32 @@ public class Empresa {
         empleados = new ArrayList<>();
     }
     
-    public boolean registrarEmpleado(){
-    
+    public boolean registrarEmpleado(Empleado e){
+        if(buscarEmpleado(e.getCodigoUnico()) != null){
+            return false;
+        }
+        empleados.add(e);
+        return true;
     }
     
-    public Empleado buscarEmpleado(){
-    
+    public Empleado buscarEmpleado(String codigoUnico){
+        for(int i = 0; i < empleados.size(); i++){
+            if(empleados.get(i).getCodigoUnico().equals(codigoUnico)){
+                return empleados.get(i);
+            }
+        }
+        return null;
     }
     
-    public boolean registrarHorasTrabajadas(){
-    
+    public boolean registrarHorasTrabajadas(String codigoUnico, int horas){
+        Empleado e = buscarEmpleado(codigoUnico);
+        
+        if(e == null){
+            return false;
+        }
+        
+        e.registrarHorasTrabajadas(horas);
+        return true;
     }
     
     public boolean registrarVentas(){
