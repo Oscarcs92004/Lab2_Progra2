@@ -9,12 +9,61 @@ import java.util.Calendar;
  * @author oscar
  */
 public class Empleado {
-    private String codigoUnico;
-    private String nombre;
-    private Calendar fechaContratacion;
-    private double salarioBase;
-    private int horasTrabajadas;
-    private String img;
+    protected String codigoUnico;
+    protected String nombre;
+    protected Calendar fechaContratacion;
+    protected double salarioBase;
+    protected int horasTrabajadas;
+    protected String img;
+    
+    public Empleado(String codigoUnico,String nombre, String img){
+        this.codigoUnico = codigoUnico;
+        this.nombre = nombre;
+        this.img = img;
+        fechaContratacion = Calendar.getInstance();
+        salarioBase = 15000;
+        horasTrabajadas = 0;
+    }
+    
+    public String getCodigoUnico(){
+        return codigoUnico;
+    }
+    
+    public String getNombre(){
+        return nombre;
+    }
+    
+    public Calendar getFechaContratacion(){
+        return fechaContratacion;
+    }
+    
+    public double getSalarioBase(){
+        return salarioBase;
+    }
+    
+    public int getHorasTrabajadas(){
+        return horasTrabajadas;
+    }
+    
+    public String getImg(){
+        return img;
+    }
+    
+    public void setCodigoUnico(String codigoUnico){
+        this.codigoUnico = codigoUnico;
+    }
+    
+    public void setNombre(String nombre){
+        this.nombre = nombre;
+    }
+    
+    public void setImg(String img){
+        this.img = img;
+    }
+    
+    public void setSalarioBase(double salarioBase){
+        this.salarioBase = salarioBase;
+    }
     
     public void registrarHorasTrabajadas(){
     
