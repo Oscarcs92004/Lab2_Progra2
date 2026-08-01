@@ -6,7 +6,7 @@ import javax.swing.*;
 public class Main extends JFrame implements ActionListener{
     
     
-    public Main(){
+    public Main(Empresa emp, Empleado actual, EmpleadoTemporal empt){
         setTitle("Empresa");
         setLocationRelativeTo(null);
         setSize(800,800);
@@ -14,7 +14,7 @@ public class Main extends JFrame implements ActionListener{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLayout(new BorderLayout());
-        setVisible(true);
+        
         
         
         //jpanel
@@ -24,6 +24,8 @@ public class Main extends JFrame implements ActionListener{
         JButton btnRegVenta = new JButton("Registrar Venta");
         JButton btnActualizarContrato = new JButton("Actualizar Contrato");
         JButton btnGenReporte = new JButton("Generar Reporte");
+        JTextArea txtmonto = new JTextArea();
+        double monto = Double.parseDouble(txtmonto.getText());
         panelDerecha.add(btnAgregar);
         panelDerecha.add(btnRegHoras);
         panelDerecha.add(btnRegVenta);
@@ -31,9 +33,23 @@ public class Main extends JFrame implements ActionListener{
         panelDerecha.add(btnGenReporte);
         add(panelDerecha);
         
+        //listeners
+        btnAgregar.addActionListener(e -> emp.registrarEmpleado(actual));
+        btnRegHoras.addActionListener(e -> emp.registrarHorasTrabajadas(actual.getCodigoUnico(), actual.getHorasTrabajadas()));
+        btnRegVenta.addActionListener(e -> emp.registrarVentas(actual.getCodigoUnico(), monto));
+        btnActualizarContrato.addActionListener(e -> emp.actualizarFechaFinContrato(actual.getCodigoUnico(), empt.getFechaFinContrato()));
+        btnGenReporte.addActionListener(e -> emp.generarReporte());
+        
+        
+        
+        
+        
+        
+        setVisible(true);
+        
     }
     public static void main(String[] args) {
-        Main main = new Main();
+   
     }
 
     @Override
