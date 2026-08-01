@@ -76,12 +76,12 @@ public class Empleado {
         if(horasTrabajadas < 0){
             return -1;
         }
-        if(horasTrabajadas > 160){
-            double salarioFinal = salarioBase*160;
+        if(horasTrabajadas > 160.0){
+            double salarioFinal = salarioBase*160.0;
             double deduccion = salarioBase*0.035;
-            return (salarioFinal/160) - deduccion;
+            return (salarioFinal/160.0) - deduccion;
         }
-        double salarioFinal = (salarioBase*horasTrabajadas)/160;
+        double salarioFinal = (salarioBase*horasTrabajadas)/160.0;
         double deduccion = salarioBase*0.035;
         return salarioFinal - deduccion;
     }
