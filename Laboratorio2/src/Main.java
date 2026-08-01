@@ -24,7 +24,7 @@ public class Main extends JFrame implements ActionListener{
         JButton btnRegVenta = new JButton("Registrar Venta");
         JButton btnActualizarContrato = new JButton("Actualizar Contrato");
         JButton btnGenReporte = new JButton("Generar Reporte");
-        JTextArea txtmonto = new JTextArea();
+        JTextField txtmonto = new JTextField();
         double monto = Double.parseDouble(txtmonto.getText());
         panelDerecha.add(btnAgregar);
         panelDerecha.add(btnRegHoras);
